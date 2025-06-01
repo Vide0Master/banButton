@@ -1,0 +1,267 @@
+body {
+    z-index: 1;
+    background-color: #101010;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.settings-icon {
+    cursor: pointer;
+    box-sizing: border-box;
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    mask-image: url(settings.svg);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    height: 2em;
+    width: 2em;
+    background-color: white;
+    transition: 0.2s;
+}
+
+.settings-icon:hover {
+    transform: scale(1.2);
+}
+
+.container {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.button-bg {
+    background-color: rgb(143, 18, 18);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1em;
+    border-radius: 2em;
+    transition: 0.1s;
+}
+
+.button-bg:hover {
+    padding: 1.25em;
+    box-shadow: 0 0 15px red;
+}
+
+.button {
+    cursor: pointer;
+    background-color: rgb(220, 14, 14);
+    padding: 1em;
+    border-radius: 1em;
+    transition: 0.1s;
+    border: none;
+}
+
+.button:hover {
+    padding: 1.5em;
+    box-shadow: 0 0 15px black;
+}
+
+.button:active {
+    padding: 0.75em;
+    box-shadow: none;
+}
+
+.button-text {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    font-weight: bold;
+}
+
+.button-text .text {
+    color: #101010;
+    font-size: 6em;
+}
+
+.button-text .hammer-img {
+    mask-image: url(hammer.svg);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    height: 6em;
+    width: 6em;
+    background-color: #101010;
+}
+
+.settings-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(1em);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2;
+}
+
+.settings-block {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    background-color: #101010;
+    color: #fff;
+    border: solid 2px #fff;
+    padding: 1em;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.hidden {
+    display: none;
+}
+
+.settings-block .users-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.settings-block .users-list .user-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    background-color: #202020;
+    padding: 0.25em;
+    border-radius: 0.25em;
+}
+
+.settings-block .users-list .user-line .remove {
+    color: red;
+    user-select: none;
+    cursor: pointer;
+}
+
+.settings-block .users-list .user-line input[type=text] {
+    background-color: transparent;
+    color: #fff;
+    border: solid 1px #fff;
+    border-radius: 0.25em;
+}
+
+.settings-block .users-list .user-line input[type=text]:active {
+    border: solid 2px #fff;
+}
+
+.settings-block .users-list .user-line .add-btn {
+    color: greenyellow;
+    user-select: none;
+    cursor: pointer;
+}
+
+
+
+.break-container{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+
+.breaking-block {
+    position: absolute;
+    padding: 10px 20px;
+    background-color: gray;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    border-radius: 6px;
+    opacity: 0;
+    transform: scale(0.8);
+    animation: blockAppear 0.4s ease-out forwards;
+    user-select: none;
+    pointer-events: none;
+}
+
+.breaking-block.red {
+    transition: background-color 0.4s ease;
+    background-color: red;
+}
+
+@keyframes blockAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.breaking-half {
+    z-index: 10;
+    position: absolute;
+    background-color: red;
+    border-radius: 6px 0 0 6px;
+    opacity: 1;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.breaking-half.left {
+    transform-origin: left center;
+    border-radius: 6px 0 0 6px;
+}
+
+.breaking-half.left.open {
+    transform: translateX(-80px) rotate(-25deg);
+    opacity: 0;
+}
+
+.breaking-half.right {
+    transform-origin: right center;
+    border-radius: 0 6px 6px 0;
+}
+
+.breaking-half.right.open {
+    transform: translateX(80px) rotate(25deg);
+    opacity: 0;
+}
+
+.breaking-spark {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: red;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 1;
+    animation: sparkAnim 0.8s ease-out forwards;
+}
+
+@keyframes sparkAnim {
+    to {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(0.3);
+    }
+}
