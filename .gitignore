@@ -1,5 +1,5 @@
 /node_modules
 /public
-package_lock.json
+package-lock.json
 package.json
 server.js
